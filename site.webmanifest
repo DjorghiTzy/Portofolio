@@ -1,0 +1,14 @@
+{
+  "name": "Djorghi Andima — Portfolio",
+  "short_name": "Djorghi A.",
+  "description": "Sales, delivery and customer-service professional from Pangkalpinang, Indonesia.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#07100d",
+  "theme_color": "#07100d",
+  "icons": [
+    { "src": "assets/img/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "assets/img/og-cover.png", "sizes": "1200x630", "type": "image/png" }
+  ]
+}

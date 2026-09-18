@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-accent="emerald">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>404 — Wrong address</title>
+<meta name="robots" content="noindex" />
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..800&family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/style.css" />
+<style>
+  .lost { min-height: 100svh; display: grid; place-content: center; justify-items: center;
+          text-align: center; gap: 1.2rem; padding: 2rem var(--pad); position: relative; z-index: 2; }
+  .lost__code { font-family: var(--display); font-size: clamp(5rem, 22vw, 12rem); font-weight: 700;
+                line-height: .9; letter-spacing: -.05em; color: var(--accent); }
+  .lost__code span { display: inline-block; transition: transform .35s var(--ease); cursor: default; }
+  .lost__code span:hover { transform: translateY(-14px) rotate(-8deg); }
+  .lost p { color: var(--muted); max-width: 46ch; }
+  .lost__actions { display: flex; flex-wrap: wrap; gap: .7rem; justify-content: center; margin-top: .6rem; }
+</style>
+</head>
+<body class="is-ready">
+  <div class="grain" aria-hidden="true"></div>
+  <div class="spotlight" id="spotlight" aria-hidden="true"></div>
+  <div class="grid-lines" aria-hidden="true"></div>
+
+  <main class="lost">
+    <div class="lost__code" aria-label="404"><span>4</span><span>0</span><span>4</span></div>
+    <h1 class="sec-title">Wrong <em>address</em></h1>
+    <p>Even the best delivery run hits a door that isn't there. This page doesn't exist — let's get you back on the route.</p>
+    <div class="lost__actions">
+      <a class="btn btn--primary" href="./">Back to home
+        <svg viewBox="0 0 24 24" class="ico"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn" href="./#contact">Contact</a>
+    </div>
+  </main>
+
+  <script>
+    /* Same pointer spotlight as the main page, inlined so 404 stays standalone. */
+    const spot = document.getElementById('spotlight');
+    addEventListener('pointermove', (e) => {
+      spot.style.setProperty('--mx', (e.clientX / innerWidth) * 100 + '%');
+      spot.style.setProperty('--my', (e.clientY / innerHeight) * 100 + '%');
+    }, { passive: true });
+  </script>
+</body>
+</html>

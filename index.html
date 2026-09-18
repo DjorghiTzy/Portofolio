@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-accent="emerald">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="dark light" />
+<title>Djorghi Andima — Sales, Delivery &amp; Customer Service</title>
+<meta name="description" content="Portfolio of Djorghi Andima, a sales, delivery and customer-service professional from Pangkalpinang, Indonesia. 18 months of field experience in retail and last-mile logistics." />
+<meta name="author" content="Djorghi Andima" />
+<meta name="theme-color" content="#07100d" media="(prefers-color-scheme: dark)" />
+<meta name="theme-color" content="#f4f7f5" media="(prefers-color-scheme: light)" />
+
+<meta property="og:type" content="profile" />
+<meta property="og:title" content="Djorghi Andima — Sales, Delivery &amp; Customer Service" />
+<meta property="og:description" content="18 months in the field: retail counters, last-mile delivery, and customers who remember your name." />
+<meta property="og:image" content="assets/img/og-cover.png" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:locale:alternate" content="id_ID" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="assets/img/favicon.svg" />
+<link rel="manifest" href="site.webmanifest" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/style.css" />
+
+<!-- The preloader is dismissed by JS; without JS it would cover the page
+     forever and body.is-loading would keep the document unscrollable. -->
+<noscript><style>
+  .preloader { display: none !important; }
+  body.is-loading { overflow: auto !important; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .hero__role, .skills, .timeline, .certs, .projects { min-height: 0; }
+</style></noscript>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Djorghi Andima",
+  "jobTitle": "Sales & Delivery Professional",
+  "email": "mailto:djorghiandima@gmail.com",
+  "address": { "@type": "PostalAddress", "addressLocality": "Pangkalpinang", "addressCountry": "ID" },
+  "sameAs": [
+    "https://github.com/DjorghiTzy",
+    "https://www.linkedin.com/in/djorghi-andima-4b89b0423/",
+    "https://www.instagram.com/djtzy__/"
+  ]
+}
+</script>
+</head>
+
+<body class="is-loading">
+
+<!-- ============ PRELOADER ============ -->
+<div class="preloader" id="preloader" role="status" aria-live="polite" aria-label="Loading">
+  <div class="preloader__mark" aria-hidden="true">
+    <svg viewBox="0 0 120 120" width="88" height="88">
+      <circle class="pre-ring pre-ring--track" cx="60" cy="60" r="52" />
+      <circle class="pre-ring" cx="60" cy="60" r="52" />
+      <text x="60" y="60" class="pre-mono" text-anchor="middle" dominant-baseline="central">DA</text>
+    </svg>
+  </div>
+  <div class="preloader__bar"><span id="preloaderFill"></span></div>
+  <div class="preloader__pct mono"><span id="preloaderPct">0</span>%</div>
+</div>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============ AMBIENT LAYERS ============ -->
+<div class="grain" aria-hidden="true"></div>
+<div class="spotlight" id="spotlight" aria-hidden="true"></div>
+<div class="grid-lines" aria-hidden="true"></div>
+
+<!-- ============ CUSTOM CURSOR ============ -->
+<div class="cursor" id="cursor" aria-hidden="true">
+  <span class="cursor__ring"></span>
+  <span class="cursor__label" id="cursorLabel"></span>
+</div>
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+
+<!-- ============ SCROLL PROGRESS ============ -->
+<div class="scroll-progress" aria-hidden="true"><span id="scrollBar"></span></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <a class="nav__logo" href="#hero" data-magnetic aria-label="Djorghi Andima, back to top">
+    <span class="nav__logo-mark">DA</span>
+    <span class="nav__logo-pulse" aria-hidden="true"></span>
+  </a>
+
+  <nav class="nav__links" aria-label="Primary">
+    <a href="#about"        data-nav data-i18n data-id="Tentang">About</a>
+    <a href="#skills"       data-nav data-i18n data-id="Keahlian">Skills</a>
+    <a href="#experience"   data-nav data-i18n data-id="Pengalaman">Experience</a>
+    <a href="#education"    data-nav data-i18n data-id="Pendidikan">Education</a>
+    <a href="#certificates" data-nav data-i18n data-id="Sertifikat">Certificates</a>
+    <a href="#projects"     data-nav data-i18n data-id="Karya">Work</a>
+    <a href="#contact"      data-nav data-i18n data-id="Kontak">Contact</a>
+    <span class="nav__indicator" aria-hidden="true"></span>
+  </nav>
+
+  <div class="nav__tools">
+    <button class="icon-btn icon-btn--wide" id="paletteOpen" data-magnetic aria-label="Open command palette" title="Command palette (Ctrl K)">
+      <svg viewBox="0 0 24 24" class="ico"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <kbd class="icon-btn__kbd mono">Ctrl K</kbd>
+    </button>
+    <button class="icon-btn" id="langToggle" data-magnetic aria-label="Switch language" title="Switch language (L)">
+      <span class="lang-flip mono" id="langLabel">EN</span>
+    </button>
+    <button class="icon-btn" id="themeToggle" data-magnetic aria-label="Switch theme" title="Switch theme (T)">
+      <svg viewBox="0 0 24 24" class="ico ico--sun"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg>
+      <svg viewBox="0 0 24 24" class="ico ico--moon"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+    </button>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ MOBILE MENU ============ -->
+<div class="sheet" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+  <nav class="sheet__links">
+    <a href="#about"        data-i18n data-id="Tentang"><span class="mono">01</span> About</a>
+    <a href="#skills"       data-i18n data-id="Keahlian"><span class="mono">02</span> Skills</a>
+    <a href="#experience"   data-i18n data-id="Pengalaman"><span class="mono">03</span> Experience</a>
+    <a href="#education"    data-i18n data-id="Pendidikan"><span class="mono">04</span> Education</a>
+    <a href="#certificates" data-i18n data-id="Sertifikat"><span class="mono">05</span> Certificates</a>
+    <a href="#projects"     data-i18n data-id="Karya"><span class="mono">06</span> Work</a>
+    <a href="#contact"      data-i18n data-id="Kontak"><span class="mono">07</span> Contact</a>
+  </nav>
+  <div class="sheet__foot">
+    <a class="btn btn--sm" href="mailto:djorghiandima@gmail.com">djorghiandima@gmail.com</a>
+  </div>
+</div>
+
+<!-- ============ SECTION DOTS ============ -->
+<nav class="dots" id="dots" aria-label="Section navigation"></nav>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero" data-section="Home">
+  <canvas id="heroCanvas" class="hero__canvas" aria-hidden="true"></canvas>
+
+  <div class="hero__inner">
+    <div class="hero__copy">
+      <button class="status" id="statusChip" type="button" aria-live="polite" title="Based on my local time in Pangkalpinang">
+        <span class="status__dot"></span>
+        <span id="statusText">Available for work</span>
+      </button>
+
+      <p class="hero__greeting" data-i18n data-id="Halo, saya">Hello, I'm</p>
+
+      <h1 class="hero__name">
+        <span class="scramble" data-text="Djorghi">Djorghi</span>
+        <span class="scramble accent" data-text="Andima">Andima</span>
+      </h1>
+
+      <p class="hero__role">
+        <span id="typewriter">Sales Professional</span><span class="caret" aria-hidden="true"></span>
+      </p>
+
+      <p class="hero__lede" data-i18n data-id="Delapan belas bulan di lapangan: melayani pelanggan di depan konter, mengantar pesanan tepat waktu, dan menjaga agar setiap orang yang saya temui merasa diurus.">
+        Eighteen months in the field: serving customers across the counter, getting orders
+        to the door on time, and making sure everyone I meet feels looked after.
+      </p>
+
+      <ul class="print-contacts">
+        <li>djorghiandima@gmail.com</li>
+        <li>+62 857-1725-4391</li>
+        <li>Pangkalpinang, Bangka Belitung, Indonesia</li>
+        <li>github.com/DjorghiTzy</li>
+        <li>linkedin.com/in/djorghi-andima-4b89b0423</li>
+      </ul>
+
+      <div class="hero__meta">
+        <span class="chip"><svg viewBox="0 0 24 24" class="ico"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>Pangkalpinang, ID</span>
+        <span class="chip"><svg viewBox="0 0 24 24" class="ico"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span class="mono" id="localTime">--:--</span> WIB</span>
+        <span class="chip"><svg viewBox="0 0 24 24" class="ico"><path d="M3 7h18v12H3z"/><path d="M8 7V5h8v2"/></svg><span data-i18n data-id="18 bulan pengalaman">18 months experience</span></span>
+      </div>
+
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="#projects" data-magnetic data-ripple>
+          <span data-i18n data-id="Lihat Karya">View Work</span>
+          <svg viewBox="0 0 24 24" class="ico"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn" href="#contact" data-magnetic data-ripple data-i18n data-id="Hubungi Saya">Get in Touch</a>
+        <button class="btn btn--ghost" id="printCv" data-magnetic data-ripple>
+          <svg viewBox="0 0 24 24" class="ico"><path d="M6 9V3h12v6M6 18H4v-7h16v7h-2M8 14h8v7H8z"/></svg>
+          <span data-i18n data-id="Cetak CV">Print CV</span>
+        </button>
+      </div>
+
+      <ul class="hero__social" aria-label="Social links">
+        <li><a href="https://github.com/DjorghiTzy" target="_blank" rel="noopener" data-cursor="GitHub" aria-label="GitHub"><svg viewBox="0 0 24 24" class="ico"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3.1-.4 6.4-1.5 6.4-7A5.4 5.4 0 0 0 20 4.8 5.1 5.1 0 0 0 19.9 1S18.7.6 16 2.5a13.4 13.4 0 0 0-7 0C6.3.6 5.1 1 5.1 1A5.1 5.1 0 0 0 5 4.8a5.4 5.4 0 0 0-1.5 3.8c0 5.4 3.3 6.6 6.4 7A3.4 3.4 0 0 0 9 18.1V22"/></svg></a></li>
+        <li><a href="https://www.linkedin.com/in/djorghi-andima-4b89b0423/" target="_blank" rel="noopener" data-cursor="LinkedIn" aria-label="LinkedIn"><svg viewBox="0 0 24 24" class="ico"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a></li>
+        <li><a href="https://www.instagram.com/djtzy__/" target="_blank" rel="noopener" data-cursor="Instagram" aria-label="Instagram"><svg viewBox="0 0 24 24" class="ico"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1"/></svg></a></li>
+        <li><a href="https://wa.me/6285717254391" target="_blank" rel="noopener" data-cursor="WhatsApp" aria-label="WhatsApp"><svg viewBox="0 0 24 24" class="ico"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 21l2.1-5.4A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8.8 8.4c.3-.7.6-.7.9-.7h.7c.2 0 .5 0 .7.6l.8 1.9c.1.2 0 .4-.1.6l-.5.6c-.2.2-.3.4-.1.7a7 7 0 0 0 3 2.6c.3.1.5.1.7-.1l.7-.8c.2-.2.4-.2.6-.1l1.8.9c.3.1.4.3.4.5 0 .6-.3 1.5-1.3 1.8-1 .3-2.4.2-4.4-1a11 11 0 0 1-4-4.3c-.5-1-.5-2.2.1-3.2Z"/></svg></a></li>
+        <li><button class="copy" data-copy="djorghiandima@gmail.com" data-cursor="Copy" aria-label="Copy email address"><svg viewBox="0 0 24 24" class="ico"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button></li>
+      </ul>
+    </div>
+
+    <aside class="hero__panel" aria-label="Quick facts">
+      <div class="card card--glass tilt" data-tilt>
+        <div class="avatar" id="avatar">
+          <img src="assets/img/profile.svg" alt="Portrait of Djorghi Andima" width="320" height="320" />
+          <span class="avatar__ring" aria-hidden="true"></span>
+        </div>
+        <dl class="facts">
+          <div><dt data-i18n data-id="Peran">Role</dt><dd>Sales &amp; Delivery</dd></div>
+          <div><dt data-i18n data-id="Bahasa">Languages</dt><dd>Indonesia · English</dd></div>
+          <div><dt data-i18n data-id="Status">Status</dt><dd class="ok" data-i18n data-id="Terbuka untuk kerja">Open to work</dd></div>
+        </dl>
+      </div>
+    </aside>
+  </div>
+
+  <a class="scroll-hint" href="#about" aria-label="Scroll to About">
+    <span class="mono" data-i18n data-id="Gulir">Scroll</span>
+    <span class="scroll-hint__line" aria-hidden="true"></span>
+  </a>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about" data-section="About">
+  <header class="sec-head reveal">
+    <span class="sec-label mono">01 — <span data-i18n data-id="Tentang">About</span></span>
+    <h2 class="sec-title" data-i18n data-id="Dibangun di lapangan, bukan di &lt;em&gt;spreadsheet&lt;/em&gt;" data-html>Built in the field, not in a <em>spreadsheet</em></h2>
+    <p class="sec-sub" data-i18n data-id="Bagaimana 18 bulan di retail dan logistik membentuk cara saya bekerja.">
+      How 18 months in retail and logistics shaped the way I work.
+    </p>
+  </header>
+
+  <div class="about">
+    <div class="about__text reveal">
+      <p data-i18n data-id="Saya memulai karier di retail dan logistik — satu tahun lima bulan sebagai Delivery Man di Indomaret, ditambah satu bulan sebagai Pramuniaga. Pekerjaan itu mengajarkan hal yang tidak bisa dipelajari dari buku: cara membaca situasi pelanggan, cara tetap tenang saat rute padat, dan cara menepati janji waktu.">
+        I started out in retail and logistics — one year and five months as a Delivery Man at
+        Indomaret, plus a month on the shop floor as a Pramuniaga. That work taught me things a
+        book cannot: how to read a customer, how to stay calm when the route is packed, and how
+        to keep a promise about time.
+      </p>
+      <p data-i18n data-id="Setiap hari berarti target, jadwal ketat, dan puluhan percakapan langsung. Dari sana saya terbiasa disiplin, rapi dalam mencatat, dan ramah tanpa perlu diminta. Sekarang saya sedang mengarahkan kebiasaan yang sama ke pekerjaan sales dan customer service yang lebih besar.">
+        Every day meant targets, tight schedules and dozens of face-to-face conversations. That
+        built the habits I lean on now: discipline, careful record-keeping, and being friendly
+        without being asked. I'm pointing those same habits at bigger sales and customer-service
+        work next.
+      </p>
+
+      <ul class="values">
+        <li class="value" tabindex="0">
+          <span class="value__k mono">01</span>
+          <strong data-i18n data-id="Tepat waktu">On time</strong>
+          <span data-i18n data-id="Jadwal antar adalah janji, bukan perkiraan.">A delivery window is a promise, not an estimate.</span>
+        </li>
+        <li class="value" tabindex="0">
+          <span class="value__k mono">02</span>
+          <strong data-i18n data-id="Ramah dulu">Friendly first</strong>
+          <span data-i18n data-id="Pelanggan mengingat sikap jauh lebih lama daripada harga.">People remember how you treated them long after they forget the price.</span>
+        </li>
+        <li class="value" tabindex="0">
+          <span class="value__k mono">03</span>
+          <strong data-i18n data-id="Selesaikan sendiri">Own the problem</strong>
+          <span data-i18n data-id="Alamat salah, stok kosong, hujan deras — tetap cari jalan keluar.">Wrong address, empty stock, heavy rain — find the way through anyway.</span>
+        </li>
+      </ul>
+
+      <div class="about__actions">
+        <button class="btn btn--primary" id="printCv2" data-magnetic data-ripple>
+          <svg viewBox="0 0 24 24" class="ico"><path d="M6 9V3h12v6M6 18H4v-7h16v7h-2M8 14h8v7H8z"/></svg>
+          <span data-i18n data-id="Cetak / Simpan CV">Print / Save CV</span>
+        </button>
+        <a class="btn" href="#contact" data-magnetic data-ripple data-i18n data-id="Ajak bicara">Start a conversation</a>
+      </div>
+    </div>
+
+    <div class="about__stats reveal">
+      <div class="stat tilt" data-tilt>
+        <span class="stat__num" data-count="18" data-suffix="">0</span>
+        <span class="stat__label" data-i18n data-id="Bulan di lapangan">Months in the field</span>
+      </div>
+      <div class="stat tilt" data-tilt>
+        <span class="stat__num" data-count="2">0</span>
+        <span class="stat__label" data-i18n data-id="Peran profesional">Professional roles</span>
+      </div>
+      <div class="stat tilt" data-tilt>
+        <span class="stat__num" data-count="3">0</span>
+        <span class="stat__label" data-i18n data-id="Sertifikat pelatihan">Training certificates</span>
+      </div>
+      <div class="stat tilt" data-tilt>
+        <span class="stat__num" data-count="2">0</span>
+        <span class="stat__label" data-i18n data-id="Bahasa yang dikuasai">Languages spoken</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section id="skills" data-section="Skills">
+  <header class="sec-head reveal">
+    <span class="sec-label mono">02 — <span data-i18n data-id="Keahlian">Skills</span></span>
+    <h2 class="sec-title" data-i18n data-id="Yang saya bawa &lt;em&gt;setiap shift&lt;/em&gt;" data-html>What I bring to <em>every shift</em></h2>
+    <p class="sec-sub" data-i18n data-id="Klik kategori untuk menyaring. Persentase adalah penilaian diri, bukan skor ujian.">
+      Click a category to filter. Percentages are my own self-assessment, not test scores.
+    </p>
+  </header>
+
+  <div class="filters reveal" role="tablist" aria-label="Skill categories">
+    <button class="filter is-active" role="tab" aria-selected="true" data-filter="all"      data-i18n data-id="Semua">All</button>
+    <button class="filter" role="tab" aria-selected="false" data-filter="customer" data-i18n data-id="Pelanggan">Customer</button>
+    <button class="filter" role="tab" aria-selected="false" data-filter="ops"      data-i18n data-id="Operasional">Operations</button>
+    <button class="filter" role="tab" aria-selected="false" data-filter="personal" data-i18n data-id="Sikap kerja">Work ethic</button>
+  </div>
+
+  <div class="skills" id="skillsGrid"></div>
+  <noscript>
+    <div class="skills">
+      <article class="skill"><div class="skill__top"><span class="skill__name">Sales</span><span class="skill__lvl">85%</span></div><p class="skill__note">Reading what a customer actually needs before pitching anything.</p></article>
+      <article class="skill"><div class="skill__top"><span class="skill__name">Communication</span><span class="skill__lvl">90%</span></div><p class="skill__note">Clear, calm and polite — in person, on the phone, over chat.</p></article>
+      <article class="skill"><div class="skill__top"><span class="skill__name">Customer Service</span><span class="skill__lvl">88%</span></div><p class="skill__note">Turning a complaint into a customer who comes back.</p></article>
+      <article class="skill"><div class="skill__top"><span class="skill__name">Shop Floor (Pramuniaga)</span><span class="skill__lvl">75%</span></div><p class="skill__note">Greeting, guiding and closing at the counter.</p></article>
+      <article class="skill"><div class="skill__top"><span class="skill__name">Last-mile Delivery</span><span class="skill__lvl">92%</span></div><p class="skill__note">17 months of daily routes, rain or shine.</p></article>
+      <article class="skill"><div class="skill__top"><span class="skill__name">Time Management</span><span class="skill__lvl">88%</span></div><p class="skill__note">Sequencing drops so the whole list lands on schedule.</p></article>
+      <article class="skill"><div class="skill__top"><span class="skill__name">Stock &amp; Display</span><span class="skill__lvl">80%</span></div><p class="skill__note">Facing, rotation and keeping shelves honest.</p></article>
+      <article class="skill"><div class="skill__top"><span class="skill__name">Route Planning</span><span class="skill__lvl">85%</span></div><p class="skill__note">Knowing the city well enough to beat the traffic.</p></article>
+      <article class="skill"><div class="skill__top"><span class="skill__name">Discipline</span><span class="skill__lvl">90%</span></div><p class="skill__note">Shift starts when it starts. Every day.</p></article>
+      <article class="skill"><div class="skill__top"><span class="skill__name">Teamwork</span><span class="skill__lvl">86%</span></div><p class="skill__note">Covering for the crew without being asked twice.</p></article>
+      <article class="skill"><div class="skill__top"><span class="skill__name">Problem Solving</span><span class="skill__lvl">82%</span></div><p class="skill__note">Wrong address at 8pm? There is always a next step.</p></article>
+      <article class="skill"><div class="skill__top"><span class="skill__name">Accountability</span><span class="skill__lvl">90%</span></div><p class="skill__note">If it was on my list, it is on me.</p></article>
+    </div>
+  </noscript>
+
+  <div class="marquee reveal" aria-hidden="true">
+    <div class="marquee__track" id="marqueeTrack"></div>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCE ============ -->
+<section id="experience" data-section="Experience">
+  <header class="sec-head reveal">
+    <span class="sec-label mono">03 — <span data-i18n data-id="Pengalaman">Experience</span></span>
+    <h2 class="sec-title" data-i18n data-id="Garis waktu &lt;em&gt;karier&lt;/em&gt;" data-html>Career <em>timeline</em></h2>
+    <p class="sec-sub" data-i18n data-id="Klik salah satu peran untuk membuka detailnya.">Click a role to expand the details.</p>
+  </header>
+
+  <ol class="timeline" id="timeline"></ol>
+  <noscript>
+    <ol class="timeline">
+      <li class="tl is-open">
+        <div class="tl__head">
+          <span class="tl__year">2024 — 2026</span>
+          <span class="tl__role">Delivery Man</span>
+          <span class="tl__co">PT Indomarco Prismatama · Pangkalpinang</span>
+        </div>
+        <div class="tl__panel"><div><div class="tl__inner">
+          <p>One year and five months running daily customer deliveries across Pangkalpinang — protecting the goods, holding the schedule, and being the face of the store at the door.</p>
+          <ul class="tl__points">
+            <li>Planned and ran daily routes so every order arrived inside its promised window.</li>
+            <li>Handled goods carefully end to end, keeping products in sellable condition on arrival.</li>
+            <li>Verified orders and payments at handover to keep the store's records clean.</li>
+            <li>Answered questions and defused complaints on the spot, without escalating.</li>
+          </ul>
+        </div></div></div>
+      </li>
+      <li class="tl is-open">
+        <div class="tl__head">
+          <span class="tl__year">2024</span>
+          <span class="tl__role">Pramuniaga (Retail Associate)</span>
+          <span class="tl__co">PT Indomarco Prismatama · Pangkalpinang</span>
+        </div>
+        <div class="tl__panel"><div><div class="tl__inner">
+          <p>A month on the shop floor: serving customers, keeping shelves full and tidy, and supporting the till during busy hours.</p>
+          <ul class="tl__points">
+            <li>Served walk-in customers and pointed them to what they were actually looking for.</li>
+            <li>Restocked, faced and rotated products so the shelves stayed sellable.</li>
+            <li>Supported cashier transactions during peak hours.</li>
+          </ul>
+        </div></div></div>
+      </li>
+    </ol>
+  </noscript>
+</section>
+
+<!-- ============ EDUCATION ============ -->
+<section id="education" data-section="Education">
+  <header class="sec-head reveal">
+    <span class="sec-label mono">04 — <span data-i18n data-id="Pendidikan">Education</span></span>
+    <h2 class="sec-title" data-i18n data-id="Tempat saya &lt;em&gt;belajar&lt;/em&gt;" data-html>Where I <em>learned</em></h2>
+    <p class="sec-sub" data-i18n data-id="Latar belakang pendidikan formal.">Formal education background.</p>
+  </header>
+
+  <div class="edu reveal">
+    <article class="card card--edu tilt" data-tilt>
+      <div class="card__ico" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="ico"><path d="M12 4 2 9l10 5 10-5-10-5Z"/><path d="M6 11.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5"/></svg>
+      </div>
+      <h3>SMA — <span data-i18n data-id="Jurusan IPA">Science Major</span></h3>
+      <p class="card__meta">SMA Negeri 1 Pangkalpinang</p>
+      <p class="card__body" data-i18n data-id="Tiga tahun di jurusan IPA: terbiasa dengan metode, ketelitian, dan kerja kelompok — dasar yang sama yang saya pakai untuk membaca rute dan mengelola stok.">
+        Three years in the science stream: method, precision and group work — the same
+        foundation I use to plan a route and keep stock straight.
+      </p>
+      <div class="card__foot">
+        <span class="tag mono">2021 — 2024</span>
+        <span class="tag mono">Pangkalpinang</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ CERTIFICATES ============ -->
+<section id="certificates" data-section="Certificates">
+  <header class="sec-head reveal">
+    <span class="sec-label mono">05 — <span data-i18n data-id="Sertifikat">Certificates</span></span>
+    <h2 class="sec-title" data-i18n data-id="Pelatihan &amp; &lt;em&gt;kredensial&lt;/em&gt;" data-html>Training &amp; <em>credentials</em></h2>
+    <p class="sec-sub" data-i18n data-id="Buka kartu untuk detail. Gunakan ← → untuk berpindah, Esc untuk menutup.">
+      Open a card for details. Use ← → to move between them, Esc to close.
+    </p>
+  </header>
+
+  <div class="certs" id="certsGrid"></div>
+  <noscript>
+    <div class="certs">
+      <article class="cert"><h3>Customer Service Fundamentals</h3><p class="cert__issuer">PT Indomarco Prismatama</p><p class="cert__date">Issued Feb 2024</p></article>
+      <article class="cert"><h3>Safety Riding Certification</h3><p class="cert__issuer">PT Indomarco Prismatama</p><p class="cert__date">Issued Mar 2024</p></article>
+      <article class="cert"><h3>Communication &amp; Selling Skills</h3><p class="cert__issuer">PT Indomarco Prismatama</p><p class="cert__date">Issued Apr 2024</p></article>
+    </div>
+  </noscript>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section id="projects" data-section="Work">
+  <header class="sec-head reveal">
+    <span class="sec-label mono">06 — <span data-i18n data-id="Karya">Work</span></span>
+    <h2 class="sec-title" data-i18n data-id="Proyek &lt;em&gt;pribadi&lt;/em&gt;" data-html>Personal <em>projects</em></h2>
+    <p class="sec-sub" data-i18n data-id="Hal-hal yang saya bangun di luar jam kerja.">Things I build outside working hours.</p>
+  </header>
+
+  <div class="filters reveal" role="tablist" aria-label="Project categories">
+    <button class="filter is-active" role="tab" aria-selected="true" data-pfilter="all" data-i18n data-id="Semua">All</button>
+    <button class="filter" role="tab" aria-selected="false" data-pfilter="automation" data-i18n data-id="Otomasi">Automation</button>
+    <button class="filter" role="tab" aria-selected="false" data-pfilter="web">Web</button>
+  </div>
+
+  <div class="projects" id="projectsGrid"></div>
+  <noscript>
+    <div class="projects">
+      <article class="project"><div class="project__body">
+        <h3>Bot Finance Tracker</h3>
+        <p>A chat-based bot that logs daily income and spending, then rolls it up into a simple weekly summary.</p>
+        <p><a href="https://github.com/DjorghiTzy" target="_blank" rel="noopener">GitHub</a></p>
+      </div></article>
+      <article class="project"><div class="project__body">
+        <h3>This Portfolio</h3>
+        <p>A dependency-light single-page portfolio: custom canvas hero, command palette, bilingual content and a printable CV view.</p>
+        <p><a href="https://github.com/DjorghiTzy/Portofolio" target="_blank" rel="noopener">GitHub</a></p>
+      </div></article>
+    </div>
+  </noscript>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" data-section="Contact">
+  <header class="sec-head reveal">
+    <span class="sec-label mono">07 — <span data-i18n data-id="Kontak">Contact</span></span>
+    <h2 class="sec-title" data-i18n data-id="Mari &lt;em&gt;bicara&lt;/em&gt;" data-html>Let's <em>talk</em></h2>
+    <p class="sec-sub" data-i18n data-id="Ada lowongan, proyek, atau sekadar ingin menyapa? Pesan ini akan terbuka di aplikasi email atau WhatsApp Anda.">
+      A role, a project, or just saying hello? Your message opens in your own email app or WhatsApp.
+    </p>
+  </header>
+
+  <div class="contact">
+    <div class="contact__side reveal">
+      <h3 data-i18n data-id="Cara tercepat">Fastest routes</h3>
+      <ul class="contact__list">
+        <li>
+          <span class="mono contact__k">EMAIL</span>
+          <a href="mailto:djorghiandima@gmail.com">djorghiandima@gmail.com</a>
+          <button class="copy copy--inline" data-copy="djorghiandima@gmail.com" aria-label="Copy email address"><svg viewBox="0 0 24 24" class="ico"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+        </li>
+        <li>
+          <span class="mono contact__k">WHATSAPP</span>
+          <a href="https://wa.me/6285717254391" target="_blank" rel="noopener">+62 857-1725-4391</a>
+          <button class="copy copy--inline" data-copy="+6285717254391" aria-label="Copy WhatsApp number"><svg viewBox="0 0 24 24" class="ico"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+        </li>
+        <li>
+          <span class="mono contact__k">LOCATION</span>
+          <span>Pangkalpinang, Bangka Belitung</span>
+        </li>
+        <li>
+          <span class="mono contact__k">HOURS</span>
+          <span data-i18n data-id="Sen–Sab, 08.00–20.00 WIB">Mon–Sat, 08:00–20:00 WIB</span>
+        </li>
+      </ul>
+
+      <div class="contact__socials">
+        <a href="https://github.com/DjorghiTzy" target="_blank" rel="noopener" data-cursor="GitHub" aria-label="GitHub"><svg viewBox="0 0 24 24" class="ico"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3.1-.4 6.4-1.5 6.4-7A5.4 5.4 0 0 0 20 4.8 5.1 5.1 0 0 0 19.9 1S18.7.6 16 2.5a13.4 13.4 0 0 0-7 0C6.3.6 5.1 1 5.1 1A5.1 5.1 0 0 0 5 4.8a5.4 5.4 0 0 0-1.5 3.8c0 5.4 3.3 6.6 6.4 7A3.4 3.4 0 0 0 9 18.1V22"/></svg></a>
+        <a href="https://www.linkedin.com/in/djorghi-andima-4b89b0423/" target="_blank" rel="noopener" data-cursor="LinkedIn" aria-label="LinkedIn"><svg viewBox="0 0 24 24" class="ico"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="https://www.instagram.com/djtzy__/" target="_blank" rel="noopener" data-cursor="Instagram" aria-label="Instagram"><svg viewBox="0 0 24 24" class="ico"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+      </div>
+    </div>
+
+    <form class="contact__form reveal" id="contactForm" novalidate>
+      <p class="form__draft mono" id="draftNote" hidden>
+        <span data-i18n data-id="Draf tersimpan di perangkat ini">Draft saved on this device</span>
+        <button type="button" id="draftClear" data-i18n data-id="hapus">clear</button>
+      </p>
+
+      <div class="field">
+        <input type="text" id="cName" name="name" required autocomplete="name" placeholder=" " />
+        <label for="cName" data-i18n data-id="Nama lengkap">Full name</label>
+        <span class="field__err" data-err></span>
+      </div>
+
+      <div class="field">
+        <input type="email" id="cEmail" name="email" required autocomplete="email" placeholder=" " />
+        <label for="cEmail" data-i18n data-id="Alamat email">Email address</label>
+        <span class="field__err" data-err></span>
+      </div>
+
+      <div class="field">
+        <input type="text" id="cSubject" name="subject" placeholder=" " />
+        <label for="cSubject" data-i18n data-id="Subjek (opsional)">Subject (optional)</label>
+      </div>
+
+      <div class="field">
+        <textarea id="cMessage" name="message" rows="5" required maxlength="1200" placeholder=" "></textarea>
+        <label for="cMessage" data-i18n data-id="Pesan Anda">Your message</label>
+        <span class="field__count mono"><span id="charCount">0</span>/1200</span>
+        <span class="field__err" data-err></span>
+      </div>
+
+      <div class="field field--hp" aria-hidden="true">
+        <label for="cCompany">Leave this empty</label>
+        <input type="text" id="cCompany" name="company" tabindex="-1" autocomplete="off" />
+      </div>
+
+      <div class="form__actions">
+        <button type="submit" class="btn btn--primary" data-magnetic data-ripple>
+          <svg viewBox="0 0 24 24" class="ico"><path d="m3 11 18-8-8 18-2-7-8-3Z"/></svg>
+          <span data-i18n data-id="Kirim lewat Email">Send via Email</span>
+        </button>
+        <button type="button" class="btn" id="sendWa" data-magnetic data-ripple>
+          <svg viewBox="0 0 24 24" class="ico"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 21l2.1-5.4A8.5 8.5 0 1 1 21 11.5Z"/></svg>
+          <span data-i18n data-id="Kirim lewat WhatsApp">Send via WhatsApp</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer__top">
+    <a class="footer__big" href="#hero" data-magnetic>
+      <span data-i18n data-id="Kembali ke atas">Back to top</span>
+      <svg viewBox="0 0 24 24" class="ico"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+    </a>
+  </div>
+  <div class="footer__bar">
+    <span>© <span id="year">2026</span> Djorghi Andima</span>
+    <span class="mono footer__hint">
+      <kbd>?</kbd> <span data-i18n data-id="pintasan">shortcuts</span> ·
+      <kbd>Ctrl</kbd><kbd>K</kbd> <span data-i18n data-id="cari">search</span>
+    </span>
+  </div>
+</footer>
+
+<!-- ============ BACK TO TOP ============ -->
+<button class="totop" id="toTop" aria-label="Back to top" title="Back to top">
+  <svg viewBox="0 0 36 36" class="totop__ring" aria-hidden="true">
+    <circle cx="18" cy="18" r="16" class="totop__track"/>
+    <circle cx="18" cy="18" r="16" class="totop__fill" id="toTopFill"/>
+  </svg>
+  <svg viewBox="0 0 24 24" class="ico"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+</button>
+
+<!-- ============ COMMAND PALETTE ============ -->
+<div class="palette" id="palette" role="dialog" aria-modal="true" aria-label="Command palette" hidden>
+  <div class="palette__box">
+    <div class="palette__input">
+      <svg viewBox="0 0 24 24" class="ico"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="text" id="paletteInput" placeholder="Jump to a section or run a command…" autocomplete="off" spellcheck="false" aria-label="Search commands" />
+      <kbd class="mono">Esc</kbd>
+    </div>
+    <ul class="palette__list" id="paletteList" role="listbox" aria-label="Results"></ul>
+    <div class="palette__foot mono">
+      <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+      <span><kbd>↵</kbd> select</span>
+      <span><kbd>Esc</kbd> close</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SHORTCUTS SHEET ============ -->
+<div class="modal" id="shortcuts" role="dialog" aria-modal="true" aria-labelledby="shortcutsTitle" hidden>
+  <div class="modal__box modal__box--sm">
+    <button class="modal__close" data-close aria-label="Close">✕</button>
+    <h3 id="shortcutsTitle" data-i18n data-id="Pintasan keyboard">Keyboard shortcuts</h3>
+    <ul class="kbd-list">
+      <li><kbd>Ctrl</kbd><kbd>K</kbd><span data-i18n data-id="Buka command palette">Open command palette</span></li>
+      <li><kbd>T</kbd><span data-i18n data-id="Ganti tema terang/gelap">Toggle light / dark theme</span></li>
+      <li><kbd>L</kbd><span data-i18n data-id="Ganti bahasa EN/ID">Switch language EN / ID</span></li>
+      <li><kbd>C</kbd><span data-i18n data-id="Salin alamat email">Copy email address</span></li>
+      <li><kbd>P</kbd><span data-i18n data-id="Cetak CV">Print CV</span></li>
+      <li><kbd>J</kbd><kbd>K</kbd><span data-i18n data-id="Bagian berikutnya / sebelumnya">Next / previous section</span></li>
+      <li><kbd>?</kbd><span data-i18n data-id="Buka panel ini">Open this panel</span></li>
+      <li><kbd>Esc</kbd><span data-i18n data-id="Tutup apa pun yang terbuka">Close anything open</span></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============ DETAIL MODAL (certs + projects) ============ -->
+<div class="modal" id="detail" role="dialog" aria-modal="true" aria-labelledby="detailTitle" hidden>
+  <div class="modal__box">
+    <button class="modal__close" data-close aria-label="Close">✕</button>
+    <div class="modal__nav">
+      <button id="detailPrev" aria-label="Previous">←</button>
+      <span class="mono" id="detailIndex">1 / 3</span>
+      <button id="detailNext" aria-label="Next">→</button>
+    </div>
+    <div class="modal__ico" id="detailIco" aria-hidden="true"></div>
+    <h3 id="detailTitle">—</h3>
+    <p class="modal__sub" id="detailSub">—</p>
+    <div class="modal__body" id="detailBody"></div>
+    <div class="modal__meta" id="detailMeta"></div>
+    <div class="modal__links" id="detailLinks"></div>
+  </div>
+</div>
+
+<!-- ============ TOASTS ============ -->
+<div class="toasts" id="toasts" role="status" aria-live="polite"></div>
+
+<script src="assets/js/data.js" defer></script>
+<script src="assets/js/hero-scene.js" defer></script>
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
