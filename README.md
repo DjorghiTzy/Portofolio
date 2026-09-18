@@ -123,6 +123,20 @@ copy of their content. That copy is a second place to edit — when you change
 
 ## Deployment
 
+### Checking which build is live
+
+Nothing in this site is content-hashed, so a cached `index.html` pins a visitor
+to that entire build — the stylesheet and scripts it references included.
+`vercel.json` therefore sets `Cache-Control: public, max-age=0, must-revalidate`
+on everything: one conditional request per file, answered with a 304 when
+nothing changed.
+
+To confirm what a browser is actually showing, open View Source (`Ctrl`+`U`) and
+look for the `build:` comment on the second line. If it is missing or says
+something older than you expect, the page is a stale copy, not a styling bug —
+hard-reload with `Ctrl`+`Shift`+`R`.
+
+
 The site is static, so it deploys anywhere without a build step.
 
 **Vercel** (what the repo homepage currently points at) picks this up with no
