@@ -1,13 +1,20 @@
 {
   "name": "djorghi-portfolio",
   "version": "2.0.0",
-  "description": "Portfolio of Djorghi Andima — static site, no build step.",
+  "description": "Portfolio of Djorghi Andima — static site; the only build step regenerates the vendored three.js bundle.",
   "private": true,
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "build:three": "esbuild build/three-entry.js --bundle --format=esm --minify --legal-comments=none --outfile=assets/vendor/three.module.js"
   },
-  "engines": { "node": ">=18" },
-  "license": "MIT"
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "three": "^0.186.0"
+  }
 }

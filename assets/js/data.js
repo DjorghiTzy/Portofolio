@@ -197,18 +197,18 @@ window.PORTFOLIO = (() => {
       badge: { en: 'Web', id: 'Web' },
       title: { en: 'This Portfolio', id: 'Portofolio Ini' },
       blurb: {
-        en: 'A dependency-light single-page portfolio: custom canvas hero, command palette, bilingual content and a printable CV view.',
-        id: 'Portofolio satu halaman dengan sedikit dependensi: hero canvas buatan sendiri, command palette, konten dua bahasa, dan tampilan CV siap cetak.'
+        en: 'A single-page portfolio with a scroll-driven WebGL background, smooth scrolling, a command palette, bilingual content and a printable CV view.',
+        id: 'Portofolio satu halaman dengan latar WebGL yang digerakkan scroll, scroll halus, command palette, konten dua bahasa, dan tampilan CV siap cetak.'
       },
       body: {
-        en: 'Hand-written HTML, CSS and vanilla JavaScript — no framework and no build step, so it deploys straight to GitHub Pages. The hero is a custom 2D canvas particle field that reacts to the pointer; everything else is progressive enhancement over plain semantic markup.',
-        id: 'HTML, CSS, dan JavaScript murni ditulis tangan — tanpa framework dan tanpa build step, jadi bisa langsung di-deploy ke GitHub Pages. Hero-nya adalah particle field canvas 2D buatan sendiri yang bereaksi pada kursor; sisanya adalah peningkatan bertahap di atas markup semantik biasa.'
+        en: 'Hand-written HTML, CSS and vanilla JavaScript — no framework, and the repository root is what gets deployed. The background is a three.js scene whose every transform is a function of scroll position, layered over a smooth-scroll implementation that eases the page toward the real scroll offset. Both are progressive enhancement: without WebGL, or with reduced motion requested, it falls back to a 2D canvas field and native scrolling.',
+        id: 'HTML, CSS, dan JavaScript murni ditulis tangan — tanpa framework, dan yang di-deploy adalah root repositori apa adanya. Latarnya adalah scene three.js yang setiap transformasinya merupakan fungsi dari posisi scroll, di atas implementasi smooth scroll yang meng-ease halaman menuju posisi scroll sebenarnya. Keduanya peningkatan bertahap: tanpa WebGL, atau ketika pengguna meminta gerakan minimal, situs kembali ke particle field canvas 2D dan scroll bawaan.'
       },
       highlights: {
-        en: ['Command palette with keyboard shortcuts', 'EN / ID language switch', 'Light & dark themes with five accents', 'Print stylesheet that outputs a clean CV'],
-        id: ['Command palette dengan pintasan keyboard', 'Pengalih bahasa EN / ID', 'Tema terang & gelap dengan lima warna aksen', 'Print stylesheet yang menghasilkan CV rapi']
+        en: ['Scroll-driven three.js background with a 2D fallback', 'Frame-rate independent smooth scrolling', 'Command palette with keyboard shortcuts', 'EN / ID language switch', 'Light & dark themes with five accents', 'Print stylesheet that outputs a clean CV'],
+        id: ['Latar three.js yang digerakkan scroll, dengan fallback 2D', 'Smooth scroll yang independen dari frame rate', 'Command palette dengan pintasan keyboard', 'Pengalih bahasa EN / ID', 'Tema terang & gelap dengan lima warna aksen', 'Print stylesheet yang menghasilkan CV rapi']
       },
-      tags: ['HTML', 'CSS', 'JavaScript', 'Canvas'],
+      tags: ['HTML', 'CSS', 'JavaScript', 'three.js', 'WebGL'],
       links: [{ label: 'GitHub', href: 'https://github.com/DjorghiTzy/Portofolio' }]
     }
   ];

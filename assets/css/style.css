@@ -176,6 +176,27 @@ kbd {
 .preloader__pct { color: var(--muted); }
 
 /* ---------- 2. AMBIENT LAYERS ---------- */
+/* WebGL background. Sits above the page background and below every
+   section (which are z-index: 2), so content always stays readable. */
+.scene-canvas {
+  position: fixed; inset: 0; z-index: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.4s var(--ease);
+}
+.scene-canvas.is-on { opacity: 1; }
+
+/* Smooth scrolling. The document keeps its real height and the wrapper is
+   translated toward the true offset, so only the class below changes -
+   without JS, or on touch, this is an ordinary static div. */
+#smoothContent { will-change: auto; }
+html.smooth-on { scroll-behavior: auto; }
+html.smooth-on #smoothWrapper {
+  position: fixed; inset: 0; overflow: hidden;
+}
+html.smooth-on #smoothContent { will-change: transform; }
+
 .grain {
   position: fixed; inset: 0; z-index: 1; pointer-events: none;
   opacity: .035; mix-blend-mode: overlay;
@@ -1147,7 +1168,7 @@ section[id] {
   /* Chrome, navigation, decoration and anything that only makes sense
      with a pointer. */
   .preloader, .nav, .sheet, .dots, .cursor, .cursor-dot, .scroll-progress,
-  .grain, .spotlight, .grid-lines, .totop, .palette, .modal, .toasts,
+  .grain, .spotlight, .grid-lines, .totop, .palette, .modal, .toasts, .scene-canvas,
   .hero__canvas, .scroll-hint, .marquee, .filters, .hero__cta, .about__actions,
   .contact__form, .footer__top, .skip-link, .hero__social, .hero__panel,
   .hero__greeting, .hero__meta, .status, .sec-sub, .project__art,
@@ -1160,6 +1181,12 @@ section[id] {
     --accent: #0a7a54; --accent-2: #0a7a54; --shadow: none; --shadow-lg: none;
   }
   html, body { background: #fff !important; color: #111 !important; font-size: 9.6pt; line-height: 1.45; }
+
+  /* JS drops smooth scrolling before printing; this is the backstop in case
+     the print dialog is opened from the browser menu instead. */
+  body { height: auto !important; }
+  #smoothWrapper { position: static !important; overflow: visible !important; }
+  #smoothContent { transform: none !important; will-change: auto !important; }
 
   section[id] { padding: 0 0 10pt; max-width: none; }
   .hero { min-height: auto; padding: 0 0 8pt; }

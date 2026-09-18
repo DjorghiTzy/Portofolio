@@ -94,6 +94,7 @@
     const meta = theme === 'light' ? '#f4f7f5' : '#07100d';
     $$('meta[name="theme-color"]').forEach((m) => m.setAttribute('content', meta));
     if (window.heroScene) window.heroScene.refreshAccent();
+    if (window.scrollScene) window.scrollScene.applyTheme();
     if (announce) toast(theme === 'light' ? t(D.ui.themeLight) : t(D.ui.themeDark));
   }
 
@@ -101,6 +102,7 @@
     root.dataset.accent = accent;
     store.set('accent', accent);
     if (window.heroScene) window.heroScene.refreshAccent();
+    if (window.scrollScene) window.scrollScene.applyTheme();
     if (announce) toast(t(D.ui.accentSet));
   }
 
@@ -143,6 +145,45 @@
   }
 
   function toggleLang() { applyLang(lang === 'id' ? 'en' : 'id', true); }
+
+  /* ========================================================
+     SMOOTH SCROLL
+     Native window scroll stays authoritative; the wrapper is translated
+     toward it a few frames behind. Left off for touch (the OS already
+     does momentum, and fighting it feels worse) and for reduced motion.
+     ======================================================== */
+  const smooth = (!isTouch && !reduced && window.SmoothScroll)
+    ? window.SmoothScroll.create({
+        wrapper: $('#smoothWrapper'),
+        content: $('#smoothContent')
+      })
+    : null;
+
+  /* Document-space offset of an element. offsetTop is layout-based, so it is
+     unaffected by the smooth-scroll transform — reading getBoundingClientRect
+     here would chase the lerp and never settle. */
+  function documentTop(el) {
+    let y = 0;
+    for (let node = el; node && node !== document.body; node = node.offsetParent) {
+      y += node.offsetTop;
+    }
+    return y;
+  }
+
+  const NAV_CLEARANCE = 88;
+
+  function goTo(target) {
+    const el = typeof target === 'string' ? document.getElementById(target) : target;
+    if (!el) return;
+    const y = Math.max(0, documentTop(el) - NAV_CLEARANCE);
+    if (smooth && smooth.isEnabled) smooth.scrollTo(y);
+    else window.scrollTo({ top: y, behavior: reduced ? 'auto' : 'smooth' });
+  }
+
+  function goToTop() {
+    if (smooth && smooth.isEnabled) smooth.scrollTo(0);
+    else window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' });
+  }
 
   /* ========================================================
      RENDERERS
@@ -527,7 +568,7 @@
     ).join('');
     $$('button', host).forEach((b) => {
       b.addEventListener('click', () => {
-        document.getElementById(b.dataset.target)?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
+        goTo(b.dataset.target);
       });
     });
   })();
@@ -564,9 +605,7 @@
   }, { passive: true });
   onScroll();
 
-  toTop?.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' });
-  });
+  toTop?.addEventListener('click', goToTop);
 
   /* ---- which section am I in ---- */
   if ('IntersectionObserver' in window) {
@@ -821,9 +860,7 @@
   setInterval(updateClock, 15000);
   setInterval(updateStatus, 300000);
 
-  $('#statusChip')?.addEventListener('click', () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
-  });
+  $('#statusChip')?.addEventListener('click', () => goTo('contact'));
 
   /* ========================================================
      COPY TO CLIPBOARD
@@ -873,6 +910,12 @@
       el.dataset.done = '1';
       el.textContent = (el.dataset.count || '0') + (el.dataset.suffix || '');
     });
+    /* A fixed, translated wrapper would print only the first screen. */
+    const wasSmooth = !!(smooth && smooth.isEnabled);
+    if (wasSmooth) smooth.disable();
+    if (wasSmooth) {
+      window.addEventListener('afterprint', () => smooth.enable(), { once: true });
+    }
     setTimeout(() => window.print(), 400);
   }
   $('#printCv')?.addEventListener('click', printCv);
@@ -1042,8 +1085,7 @@
   function buildPaletteItems() {
     const jump = (id) => () => {
       overlay.close(palette.el);
-      setTimeout(() => document.getElementById(id)
-        ?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }), 180);
+      setTimeout(() => goTo(id), 180);
     };
 
     const nav = [
@@ -1167,7 +1209,7 @@
     const active = $('.dots button.is-active')?.dataset.target || sectionIds[0];
     const i = Math.max(0, sectionIds.indexOf(active));
     const next = sectionIds[Math.min(sectionIds.length - 1, Math.max(0, i + delta))];
-    document.getElementById(next)?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
+    goTo(next);
   }
 
   document.addEventListener('keydown', (e) => {
@@ -1247,7 +1289,7 @@
     const target = document.getElementById(id);
     if (!target) return;
     e.preventDefault();
-    target.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+    goTo(target);
     history.replaceState(null, '', '#' + id);
   });
 
@@ -1258,10 +1300,77 @@
 
   applyLang(lang, false);
 
-  const canvas = $('#heroCanvas');
-  if (canvas && window.HeroScene) {
-    window.heroScene = window.HeroScene.create(canvas);
+  /* ---- background scene ----
+     Preferred: the scroll-driven WebGL layer. It is loaded on demand so the
+     ~130KB of three.js never reaches visitors who cannot or should not run
+     it — no WebGL, reduced motion, or a data-saver connection. Those get the
+     2D hero field instead, which is already in the bundle. */
+  function startHeroFallback() {
+    const heroCanvas = $('#heroCanvas');
+    if (heroCanvas && window.HeroScene) window.heroScene = window.HeroScene.create(heroCanvas);
   }
+
+  function scrollProgress() {
+    const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    /* The lerped offset, not raw scrollY: the scene must travel with the
+       content, otherwise the background leads and the page feels detached. */
+    const y = (smooth && smooth.isEnabled) ? smooth.offset : window.scrollY;
+    return y / max;
+  }
+
+  const scenePointer = { x: 0, y: 0 };
+  if (!isTouch) {
+    document.addEventListener('pointermove', (e) => {
+      scenePointer.x = (e.clientX / window.innerWidth) * 2 - 1;
+      scenePointer.y = -((e.clientY / window.innerHeight) * 2 - 1);
+    }, { passive: true });
+  }
+
+  function webglSupported() {
+    try {
+      const probe = document.createElement('canvas');
+      return !!(probe.getContext('webgl2') || probe.getContext('webgl'));
+    } catch { return false; }
+  }
+
+  const saveData = navigator.connection && navigator.connection.saveData;
+
+  async function startBackground() {
+    const sceneCanvas = $('#sceneCanvas');
+    if (!sceneCanvas || reduced || saveData || !webglSupported()) {
+      startHeroFallback();
+      return;
+    }
+    try {
+      const mod = await import('./scroll-scene.js');
+      const scene = mod.createScrollScene({
+        canvas: sceneCanvas,
+        getProgress: scrollProgress,
+        getPointer: () => scenePointer,
+        quality: (isTouch || window.innerWidth < 760) ? 'low' : 'high'
+      });
+      window.scrollScene = scene;
+      scene.start();
+      sceneCanvas.classList.add('is-on');
+
+      let sceneResize = null;
+      window.addEventListener('resize', () => {
+        clearTimeout(sceneResize);
+        sceneResize = setTimeout(() => scene.resize(), 160);
+      });
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) scene.stop(); else scene.start();
+      });
+    } catch (err) {
+      /* A blocked or failed module import must not cost the visitor the
+         background entirely. */
+      console.warn('WebGL background unavailable, using 2D fallback:', err);
+      startHeroFallback();
+    }
+  }
+
+  if (smooth) smooth.enable();
+  startBackground();
 
   /* Landing on a deep link should not fight the reveal animations. */
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
