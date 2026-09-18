@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark" data-accent="emerald">
+<html lang="en" data-theme="light" data-accent="clay">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -7,8 +7,8 @@
 <title>Djorghi Andima — Sales, Delivery &amp; Customer Service</title>
 <meta name="description" content="Portfolio of Djorghi Andima, a sales, delivery and customer-service professional from Pangkalpinang, Indonesia. 18 months of field experience in retail and last-mile logistics." />
 <meta name="author" content="Djorghi Andima" />
-<meta name="theme-color" content="#07100d" media="(prefers-color-scheme: dark)" />
-<meta name="theme-color" content="#f4f7f5" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#1f1e1d" media="(prefers-color-scheme: dark)" />
+<meta name="theme-color" content="#f0eee6" media="(prefers-color-scheme: light)" />
 
 <meta property="og:type" content="profile" />
 <meta property="og:title" content="Djorghi Andima — Sales, Delivery &amp; Customer Service" />
@@ -25,6 +25,20 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<!-- Applied before first paint: main.js runs deferred, so without this the
+     page would paint in the default theme and then swap. -->
+<script>
+  (function () {
+    try {
+      var d = document.documentElement;
+      var t = localStorage.getItem('theme');
+      var a = localStorage.getItem('accent');
+      if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      d.dataset.theme = t;
+      if (a) d.dataset.accent = a;
+    } catch (e) { /* private mode: the markup defaults already apply */ }
+  })();
+</script>
 <link rel="stylesheet" href="assets/css/style.css" />
 
 <!-- The preloader is dismissed by JS; without JS it would cover the page

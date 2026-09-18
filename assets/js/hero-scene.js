@@ -24,7 +24,7 @@ window.HeroScene = (function () {
     let waves = [];
     let raf = null;
     let running = false;
-    let accent = { r: 16, g: 185, b: 129 };
+    let accent = { r: 217, g: 119, b: 87 };
 
     const pointer = { x: -9999, y: -9999, active: false };
 

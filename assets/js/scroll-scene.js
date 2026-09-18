@@ -17,7 +17,7 @@ const TAU = Math.PI * 2;
 /* Reusable scratch object so the per-frame shard maths allocates nothing. */
 const tmp = new THREE.Vector3();
 
-function hexToColor(raw, fallback = '#10b981') {
+function hexToColor(raw, fallback = '#d97757') {
   const value = (raw || '').trim() || fallback;
   try { return new THREE.Color(value); }
   catch { return new THREE.Color(fallback); }
@@ -131,15 +131,15 @@ export function createScrollScene({ canvas, getProgress, getPointer, quality = '
        so light mode draws normally with a denser colour instead. */
     dustMat.blending = isLight ? THREE.NormalBlending : THREE.AdditiveBlending;
     dustMat.color.copy(accent);
-    dustMat.opacity = isLight ? 0.5 : 0.85;
+    dustMat.opacity = isLight ? 0.38 : 0.85;
     dustMat.needsUpdate = true;
 
     coreMat.color.copy(accent);
-    coreMat.opacity = isLight ? 0.26 : 0.4;
+    coreMat.opacity = isLight ? 0.2 : 0.4;
     ringMat.color.copy(accent);
-    ringMat.opacity = isLight ? 0.35 : 0.5;
+    ringMat.opacity = isLight ? 0.28 : 0.5;
     shardMat.color.copy(accent);
-    shardMat.opacity = isLight ? 0.5 : 0.75;
+    shardMat.opacity = isLight ? 0.4 : 0.75;
   }
   applyTheme();
 

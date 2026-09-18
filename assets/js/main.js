@@ -91,7 +91,7 @@
   function applyTheme(theme, announce) {
     root.dataset.theme = theme;
     store.set('theme', theme);
-    const meta = theme === 'light' ? '#f4f7f5' : '#07100d';
+    const meta = theme === 'light' ? '#f0eee6' : '#1f1e1d';
     $$('meta[name="theme-color"]').forEach((m) => m.setAttribute('content', meta));
     if (window.heroScene) window.heroScene.refreshAccent();
     if (window.scrollScene) window.scrollScene.applyTheme();
@@ -107,7 +107,7 @@
   }
 
   applyTheme(store.get('theme', prefersLight.matches ? 'light' : 'dark'), false);
-  applyAccent(store.get('accent', 'emerald'), false);
+  applyAccent(store.get('accent', 'clay'), false);
 
   prefersLight.addEventListener('change', (e) => {
     /* Only follow the OS once the visitor has not chosen for themselves. */
@@ -1114,7 +1114,7 @@
         run: () => { overlay.close(palette.el); setTimeout(() => overlay.open($('#shortcuts')), 260); } }
     ].map((a) => ({ ...a, kind: lang === 'id' ? 'Aksi' : 'Action' }));
 
-    const accents = ['emerald', 'violet', 'amber', 'cyan', 'rose'].map((a) => ({
+    const accents = ['clay', 'amber', 'moss', 'plum', 'indigo'].map((a) => ({
       name: (lang === 'id' ? 'Warna aksen: ' : 'Accent: ') + a,
       kind: lang === 'id' ? 'Tema' : 'Theme',
       icon: 'spark',
@@ -1263,7 +1263,7 @@
 
     function burst() {
       if (reduced) return;
-      const colors = ['#10b981', '#34d399', '#8b5cf6', '#f59e0b', '#06b6d4', '#f43f5e'];
+      const colors = ['#d97757', '#e0a33b', '#9db874', '#d294b0', '#9aa8dc', '#c9603c'];
       for (let i = 0; i < 90; i++) {
         const bit = document.createElement('i');
         bit.className = 'confetti';

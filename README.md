@@ -41,13 +41,38 @@ assets/img/                favicon, avatar placeholder, social preview
 | Command palette | `Ctrl`/`⌘` + `K` — jump to a section, switch theme or language, copy contacts, print the CV |
 | Keyboard | `T` theme · `L` language · `C` copy email · `P` print CV · `J`/`K` next/previous section · `?` shortcut sheet · `Esc` close |
 | Language | Full EN ⇄ ID switch, remembered between visits |
-| Theme | Light/dark plus five accent colours, remembered between visits |
+| Theme | Cream and warm-dark, plus five accents (clay, amber, moss, plum, indigo), remembered between visits |
 | Skills | Filter by category, self-assessment bars animate into view, pointer-tracked card lighting |
 | Experience | Accordion timeline, all panels force-open when printing |
 | Certificates / Work | Detail dialog with `←` `→` navigation, focus trap and backdrop dismiss |
 | Contact form | Live validation, character counter, draft saved locally, sends through your own email app or WhatsApp |
 | Everywhere | Custom cursor, magnetic buttons, ripples, 3-D tilt cards, scroll progress, section dots, animated counters |
 | Hidden | The Konami code does something |
+
+## Palette
+
+Cream paper with a clay accent — the warm family the site started from, not a
+neutral grey one. Light mode is the identity; dark mode is a warm charcoal
+(`#1f1e1d`) rather than black, so the two themes read as the same family rather
+than as two different sites.
+
+| | cream | warm dark |
+|---|---|---|
+| page | `#f0eee6` | `#1f1e1d` |
+| raised surface | `#faf9f5` | `#262624` |
+| text | `#1f1e1d` | `#f0eee6` |
+| accent (clay) | `#ad4a2b` | `#d97757` |
+
+Every accent is picked to clear WCAG AA (4.5:1) against its own background in
+both themes, in both directions — as text on the page, and as the label on an
+accent-filled button. That matters here because the accent carries real content,
+not just decoration: section labels, issuers, dates and years are all accent
+coloured. If you retune a colour, check both numbers before committing.
+
+The light-mode card surfaces are deliberately near-opaque (`--surface`). Clay
+lines on cream carry much more contrast than the same lines on charcoal, so at
+low opacity the WebGL geometry reads straight through the cards and competes
+with the text.
 
 ## Scrolling and the WebGL background
 
