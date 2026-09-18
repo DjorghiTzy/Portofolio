@@ -139,8 +139,15 @@ hard-reload with `Ctrl`+`Shift`+`R`.
 
 The site is static, so it deploys anywhere without a build step.
 
-**Vercel** (what the repo homepage currently points at) picks this up with no
-configuration: framework preset *Other*, no build command, output directory `.`.
+**Vercel** deploys straight from `vercel.json`, which pins the project settings
+rather than leaving them to auto-detection: no framework, no install step, no
+build step, repo root as the output.
+
+That is deliberate. `package.json` exists only for the local preview server and
+for regenerating the vendored three.js bundle — nothing in it is needed to serve
+the site. Left to auto-detect, Vercel reacts to `package.json` changes by trying
+to install and build, and a failure there silently pins production to the last
+deployment that worked while pushes appear to succeed.
 It deploys the production branch on every push.
 
 **GitHub Pages** is wired up in `.github/workflows/deploy-pages.yml`. It runs on
