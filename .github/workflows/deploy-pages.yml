@@ -27,8 +27,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # enablement turns Pages on the first time this runs, so the repo does
+      # not have to be switched to "Source: GitHub Actions" by hand first.
       - name: Configure Pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       # The site is plain HTML/CSS/JS — the repo root is the artifact.
       - name: Upload artifact
