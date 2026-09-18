@@ -27,19 +27,29 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # enablement turns Pages on the first time this runs, so the repo does
-      # not have to be switched to "Source: GitHub Actions" by hand first.
+      # Pages has to be switched on by a repository admin once
+      # (Settings → Pages → Source: GitHub Actions). GITHUB_TOKEN cannot do
+      # it — the create-site endpoint needs admin rights. Until then this
+      # step fails, so the run reports a notice and skips instead of going
+      # red on every push; it starts deploying by itself once Pages is on.
       - name: Configure Pages
+        id: pages
         uses: actions/configure-pages@v5
-        with:
-          enablement: true
+        continue-on-error: true
 
-      # The site is plain HTML/CSS/JS — the repo root is the artifact.
+      - name: Pages not enabled
+        if: steps.pages.outcome != 'success'
+        run: |
+          echo "::notice title=GitHub Pages is off::Enable it under Settings → Pages → Build and deployment → Source: GitHub Actions. This workflow will then deploy on its own."
+
       - name: Upload artifact
+        if: steps.pages.outcome == 'success'
         uses: actions/upload-pages-artifact@v3
         with:
+          # The site is plain HTML/CSS/JS — the repo root is the artifact.
           path: .
 
       - name: Deploy
         id: deployment
+        if: steps.pages.outcome == 'success'
         uses: actions/deploy-pages@v4

@@ -58,8 +58,13 @@ configuration: framework preset *Other*, no build command, output directory `.`.
 It deploys the production branch on every push.
 
 **GitHub Pages** is wired up in `.github/workflows/deploy-pages.yml`. It runs on
-pushes to the repository's default branch and publishes the repo root. Enable it
-once under **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+pushes to the repository's default branch and publishes the repo root.
+
+It needs one manual step first: **Settings → Pages → Build and deployment →
+Source: GitHub Actions**. Only a repository admin can turn Pages on — the
+workflow's own token is not allowed to, so until you flip that switch the job
+logs a notice and skips rather than failing. Once Pages is on, the next push
+deploys to `https://djorghitzy.github.io/Portofolio/`.
 
 If you rename the default branch to `main`, both keep working — the workflow
 tracks whichever branch is default rather than a hardcoded name.
