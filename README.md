@@ -51,9 +51,18 @@ copy of their content. That copy is a second place to edit — when you change
 
 ## Deployment
 
-Pushing to `main` triggers `.github/workflows/deploy-pages.yml`, which publishes
-the repository root to GitHub Pages. Enable it once under
-**Settings → Pages → Build and deployment → Source: GitHub Actions**.
+The site is static, so it deploys anywhere without a build step.
+
+**Vercel** (what the repo homepage currently points at) picks this up with no
+configuration: framework preset *Other*, no build command, output directory `.`.
+It deploys the production branch on every push.
+
+**GitHub Pages** is wired up in `.github/workflows/deploy-pages.yml`. It runs on
+pushes to the repository's default branch and publishes the repo root. Enable it
+once under **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+
+If you rename the default branch to `main`, both keep working — the workflow
+tracks whichever branch is default rather than a hardcoded name.
 
 ## Replacing the portrait
 

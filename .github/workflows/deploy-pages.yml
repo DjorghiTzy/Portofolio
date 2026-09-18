@@ -1,8 +1,10 @@
 name: Deploy to GitHub Pages
 
+# GitHub Actions cannot name "the default branch" in a push filter, so this
+# listens on every branch and the job below runs only on the default one.
+# That keeps working if the default is later renamed to main.
 on:
   push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -17,6 +19,7 @@ concurrency:
 
 jobs:
   deploy:
+    if: github.ref_name == github.event.repository.default_branch
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
